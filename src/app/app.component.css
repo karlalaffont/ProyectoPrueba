@@ -1,0 +1,9 @@
+label span input button h1 {
+  font-family: "Quicksand", sans-serif;
+}
+
+.from-container {
+  background-color: #fafafa;
+  margin: 1rem;
+  padding: 1rem;
+}

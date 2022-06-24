@@ -1,0 +1,123 @@
+<div class="Registrar-usuario">
+  <h1 class="title">Registro de Usuario</h1>
+  <!--Formulario-->
+  <div class="form-container">
+    <form
+      [formGroup]="usuarioForm"
+      (ngSubmit)="submitUsuarioForm()"
+      #resetUsuarioForm="ngForm"
+      novalidate
+      class="form"
+    >
+      <!--Nombre -->
+      <label for="name" class="label">Nombre Completo</label>
+      <div class="example-full-width">
+        <input
+          class="input"
+          id="name"
+          type="text"
+          placeholder="Nombre completo"
+          formControlName="fullName"
+          autocomplete="off"
+          oninput="this.value = this.value.replace(/[^a-zA-Z\f]/,'')"
+        />
+        <div *ngIf="handleError('fullName', 'required')" class="InputError">
+          Nombre es requerido
+        </div>
+      </div>
+
+      <!--Cedula-->
+      <label for="number" class="label">Cedula de Identidad</label>
+      <div class="example-full-width">
+        <input
+          class="input"
+          placeholder="Cédula de Identidad"
+          type="number"
+          formControlName="nationalIdentity"
+        />
+        <div
+          *ngIf="handleError('nationalIdentity', 'required')"
+          class="InputError"
+        >
+          Cedula es requerido
+        </div>
+      </div>
+
+      <!--Fecha de Nacimiento -->
+      <label for="date" class="label">Fecha de Nacimiento</label>
+      <div>
+        <input
+          type="date"
+          class="input"
+          id="date"
+          formControlName="birthDate"
+        />
+        <div *ngIf="handleError('birthDate', 'required')" class="InputError">
+          Fecha de Nacimiento es requerido
+        </div>
+      </div>
+
+      <!--Direccion de Correo Electronico -->
+      <label for="Email" class="label">Email</label>
+      <div>
+        <input
+          class="input"
+          id="email"
+          placeholder="Email"
+          type="email"
+          formControlName="email"
+        />
+        <div *ngIf="handleError('email', 'required')" class="InputError">
+          Email es requerido
+        </div>
+        <div *ngIf="handleError('email', 'email')" class="InputError">
+          El email debe tener un formato valido
+        </div>
+      </div>
+
+      <!--Telefono-->
+      <label for="date" class="label">Numero de Telefono</label>
+      <div class="example-full-width">
+        <input
+          id="date"
+          class="input"
+          type="number"
+          placeholder="Teléfono"
+          formControlName="phone"
+        />
+        <div *ngIf="handleError('phone', 'required')" class="InputError">
+          Teléfono es requerido
+        </div>
+      </div>
+
+      <!--Organización -->
+      <div>
+        <label class="label">Organización</label>
+        <div>
+          <select formControlName="organitation" name="organitation">
+            <option
+              [value]="sectioinArray"
+              *ngFor="let sectioinArray of SectioinArray"
+            >
+              {{ sectioinArray }}
+            </option>
+          </select>
+          <div
+            *ngIf="handleError('organitation', 'required')"
+            class="InputError"
+          >
+            Organización es requerida
+          </div>
+        </div>
+      </div>
+
+      <!-- Botton de Registro -->
+
+      <div class="full-wrapper button-wrapper">
+        <div>
+          <button type="submit" class="BotonRegistro">Registrar</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
